@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>новость</title>
+    <link rel="shortcut icon" href="/static/img/favicon.png" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/static/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/static/css/mdb.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+</head>
+<body>
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light  ">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="/">
+        <img src="/static/img/logo.png" height="70" alt="">
+    </a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto text-center">
+            <li class="nav-item ">
+                <a class="nav-link" href="/">ГЛАВНАЯ
+
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">О НАС</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/news">НОВОСТИ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/projects">ПРОЕКТЫ</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">КОНТАКТЫ</a>
+
+                <div class="dropdown-menu dropdown-menu-center">
+                    <div class="px-3 py-3 text-center">
+                        <a class="dropdown-item" href="tel:+380487505656">+38 (048) 750-56-56</a>
+                        <a class="dropdown-item" href="tel:+380487505757">+38 (048) 750-57-57</a>
+                        <a class="dropdown-item " href="mailto:info@gamma.od.ua">info@gamma.od.ua</a>
+                        <a class="dropdown-item " href="#">пн - пт, 9:00-17:00</a>
+
+
+                    </div>
+
+                </div>
+            </li>
+
+
+        </ul>
+        <!-- Links -->
+
+        <!-- d-none d-sm-none d-md-none d-lg-block -->
+        <div class=" text-center">
+            <a class="btn btn-info" href="/#contacts" role="button"
+               aria-haspopup="true" aria-expanded="false">
+                связаться с нами
+            </a>
+
+
+        </div>
+
+
+    </div>
+    <!-- Collapsible content -->
+
+</nav>
+
+
+<div class="container">
+    <section>
+
+        <h2 class="h1-responsive font-weight-bold mt-5 text-center mb-3 ">{{ .news.Title }}</h2>
+        <p class="dark-grey-text font-italic text-right ">{{ .news.Date.Format "02/01/2006" }}</p>
+        <div class="text-center">
+            <img src="/{{ .news.Images }}" alt="" class="img-fluid w-100 z-depth-2">
+        </div>
+
+        <p class="my-4"><span>{{ .text }}</span></p>
+
+
+    </section>
+
+
+</div>
+<footer class="page-footer font-small  blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container">
+
+        <!-- Grid row-->
+        <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="/">ГЛАВНАЯ</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="/about">О НАС</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="/news">НОВОСТИ</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="/projects">ПРОЕКТЫ</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="/#contacts">КОНТАКТЫ</a>
+                </h6>
+            </div>
+
+            <!-- Grid column -->
+
+
+        </div>
+        <!-- Grid row-->
+        <hr class="rgba-white-light" style="margin: 0 15%;">
+
+        <!-- Grid row-->
+        <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+            <!-- Grid column -->
+            <div class="col-md-8 col-12 mt-5">
+                <p style="line-height: 1.7rem">Все наши решения основаны на базе средств автоматизации, а также систем
+                    управления и
+                    визуализации компании EATON. <br>
+                    Eaton – многоотраслевая промышленная корпорация, мировой лидер в разработке и производстве
+                    решений для обеспечения качества, распределения и управления электропитанием, оборудования для
+                    промышленного контроля и промышленной автоматики.</p>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+        <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+        <!-- Grid row-->
+        <div class="row pb-3">
+
+            <!-- Grid column -->
+            <div class="col-md-12">
+
+                <div class="mb-5 flex-center">
+
+                    <!-- Facebook -->
+                    <a class="fb-ic" href="{{ .social.Facebook }}">
+                        <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
+                    </a>
+                    <!-- Viber -->
+                    <a class="vb-ic" href="{{ .social.Viber }}">
+                        <i class="fab fa-viber fa-lg white-text mr-4"> </i>
+                    </a>
+                    <!--Telegram -->
+                    <a class="tl-ic" href="{{ .social.Telegram }}">
+                        <i class="fab fa-telegram-plane fa-lg white-text mr-4"> </i>
+                    </a>
+                    <!--YouTube-->
+                    <a class="ins-ic" href="{{ .social.Youtube }}">
+                        <i class="fab fa-youtube fa-lg white-text mr-4"> </i>
+                    </a>
+                    <!-- RSS -->
+                    <a class="ins-ic" href="/rss">
+                        <i class="fas fa-rss fa-lg white-text mr-4"></i>
+                    </a>
+
+
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 "> Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/"> © WWW.GAMMA.OD.UA</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+<!-- JQuery -->
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="./js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="./js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="./js/mdb.min.js"></script>
+</body>
+</html>

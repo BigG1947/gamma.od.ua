@@ -25,7 +25,7 @@ func connectionToMysqlServer() (*sql.DB, error) {
 		return nil, err
 	}
 
-	connectionString := fmt.Sprintf("%s:%s@%s(%s:%d)/%s", config.User, config.Password, config.Protocol, config.Host, config.Port, config.DbName)
+	connectionString := fmt.Sprintf("%s:%s@%s(%s:%d)/%s?parseTime=true", config.User, config.Password, config.Protocol, config.Host, config.Port, config.DbName)
 	db, err := sql.Open("mysql", connectionString)
 	if err != nil {
 		return nil, err

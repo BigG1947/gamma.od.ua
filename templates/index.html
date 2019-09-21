@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>главная</title>
+    <link rel="shortcut icon" href="/static/img/favicon.png" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/static/css/mdb.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+</head>
+<body>
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light  ">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="/">
+        <img src="/static/img/logo.png" height="70" alt="">
+    </a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto text-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">ГЛАВНАЯ
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about">О НАС</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/news">НОВОСТИ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/projects">ПРОЕКТЫ</a>
+            </li>
+
+            <!--<li class="nav-item">
+                <a class="nav-link" href="./index.html#contacts">КОНТАКТЫ</a>
+            </li>-->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">КОНТАКТЫ</a>
+
+                <div class="dropdown-menu dropdown-menu-center">
+                    <div class="px-3 py-3 text-center">
+                        <a class="dropdown-item" href="tel:+380487505656">+38 (048) 750-56-56</a>
+                        <a class="dropdown-item" href="tel:+380487505757">+38 (048) 750-57-57</a>
+                        <a class="dropdown-item" href="tel:+380487505757">+38 (0482) 34-86-08</a>
+                        <a class="dropdown-item " href="mailto:info@gamma.od.ua">info@gamma.od.ua</a>
+                        <a class="dropdown-item " href="#">пн - пт, 9:00-17:00</a>
+
+
+                    </div>
+
+                </div>
+            </li>
+
+
+        </ul>
+        <!-- Links -->
+
+        <!-- d-none d-sm-none d-md-none d-lg-block -->
+        <div class=" text-center">
+            <a class="btn btn-info  " href="/#contacts" role="button"
+               aria-haspopup="true" aria-expanded="false">
+                связаться с нами
+            </a>
+
+
+        </div>
+
+
+    </div>
+    <!-- Collapsible content -->
+
+</nav>
+
+
+<!--/.Navbar-->
+
+<!--Carousel Wrapper-->
+<div id="carousel" class="carousel slide carousel-fade d-none d-md-block" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel" data-slide-to="1"></li>
+        <li data-target="#carousel" data-slide-to="2"></li>
+
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+        <div class="carousel-item active">
+
+            <div class="view">
+                <img class="d-block w-100" src="/static/img/slider3.png"
+                     alt="Third slide">
+                <div class="mask rgba-black-light"></div>
+            </div>
+            <div class="carousel-caption">
+
+                <h1 class="h1-responsive">О КОМПАНИИ ООО "ИКБ ГАММА"</h1>
+                <p class="h5-responsive"> Наша фирма ООО «ИКБ Гамма» с 1993 года является разработчиком и
+                    производителем готовых решений в области промышленной автоматизации, а также
+                    официальным дистрибьютором компании «EATON» (Moeller), партнерами ведущих
+                    производителей компонентов для электротехнической промышленности, таких как Weidmuller,
+                    Phoenix&#160;Contact, Festo.</p>
+            </div>
+        </div>
+
+
+        <div class="carousel-item ">
+            <div class="view">
+                <img class="d-block w-100" src="/static/img/slider2.jpg"
+                     alt="First slide">
+                <div class="mask rgba-black-light"></div>
+
+            </div>
+            <div class="carousel-caption">
+                <h1 class="h1-responsive">О КОМПАНИИ ООО "ИКБ ГАММА"</h1>
+                <p class="h5-responsive"> Наша фирма ООО «ИКБ Гамма» с 1993 года является разработчиком и
+                    производителем готовых решений в области промышленной автоматизации, а также
+                    официальным дистрибьютором компании «EATON» (Moeller), партнерами ведущих
+                    производителей компонентов для электротехнической промышленности, таких как Weidmuller,
+                    Phoenix Contact, Festo.</p>
+                <!-- <div class="d-none d-lg-block"><p class="display-3 mb-0 embed-responsive "> <b>ООО "ИКБ ГАММА"</b></p></div>
+
+                 <div class="d-md-block d-lg-none"><p class="display-4 mb-0  "> <b>ООО "ИКБ ГАММА"</b></p></div>
+                 <p class="h3-responsive"><i>одни процесс множество ключевых решений</i></p>-->
+            </div>
+        </div>
+
+
+        <div class="carousel-item">
+
+            <div class="view">
+                <img class="d-block w-100" src="/static/img/slider3_1.jpg"
+                     alt="Second slide">
+                <div class="mask rgba-black-light"></div>
+
+            </div>
+            <div class="carousel-caption">
+                <h1 class="h1-responsive">О КОМПАНИИ ООО "ИКБ ГАММА"</h1>
+                <p class="h5-responsive"> Наша фирма ООО «ИКБ Гамма» с 1993 года является разработчиком и
+                    производителем готовых решений в области промышленной автоматизации, а также
+                    официальным дистрибьютором компании «EATON» (Moeller), партнерами ведущих
+                    производителей компонентов для электротехнической промышленности, таких как Weidmuller,
+                    Phoenix Contact, Festo.</p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+</div>
+<!--/.Carousel Wrapper-->
+
+
+<div class="container">
+    <!-- Section: Features v.1 -->
+
+    <section class="text-center my-5">
+
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold my-5">ПОЧЕМУ ВЫБИРАЮТ НАС</h2>
+        <!-- Section description -->
+        <!-- <p class="lead dark-grey-text w-responsive mx-auto mb-5">ООО «ИКБ Гамма» является разработчиком и производителем готовых решений в области промышленной автоматизации, системе «Умный дом», дистрибьютором и системным интегратором компании «EATON» (Moeller), партнером компаний «WEIDMULLER», «PHOENIX CONTACT» и «HAUPA» , сотрудничает со многими другими мировыми производителями электротехнической продукции.</p> -->
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-4">
+
+                <i class="fas fa-business-time fa-3x green-text"></i>
+                <h5 class="font-weight-bold my-4">Надежность</h5>
+                <p class="dark-grey-text mb-md-0 mb-5">
+                    опыт работы в области промышленной автоматизации более 20 лет не только на рынке Украины,
+                    но и в странах СНГ и Европы
+
+                </p>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4">
+
+                <i class="fas fa-comments fa-3x blue-text"></i>
+                <h5 class="font-weight-bold my-4">Поддержка</h5>
+                <p class="dark-grey-text mb-md-0 mb-5">
+                    сервисная и консультативная поддержка, возможность дистанционного подключения и управления
+                </p>
+
+            </div>
+
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-4">
+
+                <i class="fas fa-cogs fa-3x orange-text"></i>
+                <h5 class="font-weight-bold my-4">Технологии</h5>
+                <p class="dark-grey-text mb-0">все наши решения основаны на базе средств автоматизации , а также систем
+                    управления и визуализации компании EATON.
+                </p>
+
+            </div>
+            <!-- Grid column -->
+            <div class="w-100 my-5"></div>
+            <div class="col-md-4">
+
+                <i class="fas fa-chart-line fa-3x deep-purple-text"></i>
+                <h5 class="font-weight-bold my-4">Современность</h5>
+                <p class="dark-grey-text mb-md-0 mb-5">
+                    использование инновационных систем и технологий, индивидуальный подход
+
+                </p>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <i class="fas fa-award fa-3x light-green-text"></i>
+                <h5 class="font-weight-bold my-4">Качество</h5>
+                <p class="dark-grey-text mb-md-0 mb-5">
+                    все средства автоматизации изготовлены и сертифицированы по мировым стандартам
+                </p>
+
+            </div>
+            <div class="col-md-4">
+
+                <i class="fas fa-server fa-3x cyan-text"></i>
+                <h5 class="font-weight-bold my-4">OPC-сервер</h5>
+                <p class="dark-grey-text mb-md-0 mb-5">
+                    бесплатный ОРС-сервер позволяет разработать любую SCADA-систему
+                </p>
+
+            </div>
+
+        </div>
+        <!-- Grid row -->
+
+    </section>
+    <!-- Section: Features v.1 -->
+
+    <hr class="mt-4 mb-5">
+    <section class="my-5">
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold my-5 text-center">НАШИ ЛУЧШИЕ ПРОЕКТЫ</h2>
+
+        <!-- Grid row -->
+        <div class="row text-center">
+            {{ range .pl.ProjectList }}
+                <!-- Grid column -->
+                <div class="col-lg-4 col-md-12 mb-lg-0 mb-4">
+                    <!--Featured image-->
+                    <div class="view overlay rounded z-depth-1">
+                        <img src="/{{ .Images }}" class="img-fluid img-responsive" alt="Sample project image">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                    <!--Excerpt-->
+                    <div class="card-body pb-0">
+                        <h4 class="font-weight-bold my-3">{{ .Name }}</h4>
+                        <p class="dark-grey-text">{{ .Description }}
+                        </p>
+                        <a class="btn btn-info btn-sm" href="/projects/{{ .Id }}"><i class="fas fa-clone left"></i>ознакомиться</a>
+                    </div>
+                </div>
+                <!-- Grid column -->
+            {{ end }}
+        </div>
+        <!-- Grid column -->
+        <div class="text-center my-5">
+            <a class="btn btn-outline-info waves-effect" href="/projects">все проекты</a>
+        </div>
+
+    </section>
+    <hr class="mt-4 mb-5">
+
+    <!-- Section: news v.2 -->
+    <section class="my-5">
+
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold text-center my-5">Последние новости</h2>
+
+        <!-- Grid row -->
+        {{ range .nl.NewsList }}
+
+            <div class="row my-5">
+                <!-- Grid column -->
+                <div class="col-lg-5">
+
+                    <!-- Featured image -->
+                    <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
+                        <img class="img-fluid img-responsive " src="/{{.Images}}" alt="Sample image">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-lg-7">
+                    <p class="dark-grey-text font-italic mt-sm-3 mt-3 mt-md-0 mt-lg-0 mt-xl-0">{{ .Date.Format "02/01/2006" }}</p>
+                    <!-- Post title -->
+                    <h3 class="font-weight-bold mb-3"><strong>{{ .Title }}</strong></h3>
+                    <!-- Post data -->
+
+                    <!-- Excerpt -->
+                    <p>{{ .Description }}</p>
+
+                    <!-- Read more button -->
+                    <a class="btn btn-info btn-md" href="/news/{{ .Id }}">Подробнее</a>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+        {{ end }}
+
+
+        <div class="text-center my-5">
+            <a href="/news" class="btn btn-outline-info waves-effect ">все новости</a>
+        </div>
+    </section>
+
+
+    <hr class="mt-4 mb-5">
+
+
+    <!-- Section: Contact v.1 -->
+    <section id="contacts" class="my-5">
+
+        <!-- Section heading -->
+        <h2 class="h1-responsive font-weight-bold text-center mt-5">СВЯЖИТЕСЬ С НАМИ</h2>
+        <!-- Section description -->
+        <p class="text-center w-responsive mx-auto mt-4 pb-5">Решение нетипичных задач любой сложности и направления
+            и индивидуальный творческий подход к каждому клиенту</p>
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-lg-5 mb-lg-0 mb-4">
+
+                <!-- Form with header -->
+                <form action="/feedbacks/add" method="post" class="card">
+                    <div class="card-body">
+                        <!-- Header -->
+                        <div class="form-header ">
+                            <h3 class="mt-2"><i class="fas fa-envelope"></i> напишите нам:</h3>
+                        </div>
+                        <p class="dark-grey-text">Мы с удовольствием ответим на все ваши вопросы</p>
+                        <!-- Body -->
+                        {{ if .flashes }}
+                                <div class="alert alert-info text-center">{{ .flashes }}</div>
+                        {{ end }}
+                        <div class="md-form">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <input name="name" type="text" id="form-name" class="form-control" maxlength="30" required>
+                            <label for="form-name">Ваше имя</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <input name="email" required type="email" id="form-email" class="form-control">
+                            <label for="form-email">Ваш email</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-tag prefix grey-text"></i>
+                            <input name="theme" type="text" id="form-Subject" class="form-control" maxlength="30" required>
+                            <label for="form-Subject">Тема</label>
+                        </div>
+                        <div class="md-form">
+                            <i class="fas fa-pencil-alt prefix grey-text"></i>
+                            <textarea name="text" id="form-text" class="form-control md-textarea" rows="3" required></textarea>
+                            <label for="form-text">Тело письма</label>
+                        </div>
+
+                        <div  class="g-recaptcha mb-2" data-sitekey="6LfZbLEUAAAAAH0MDZxHC0xVf-SxFeHVnzXhv37k"></div>
+                        <!--<div id="g-recaptcha2" class="mb-2 d-flex justify-content-center" data-callback="verify"></div>-->
+                        <input id="input_token" type="hidden" name="token" value="">
+
+                        {{ .csrfField }}
+
+
+                        <div class="text-center">
+                            <button id="form_callback_button" class="btn btn-info waves-effect waves-light" disabled>Отправить</button>
+                        </div>
+                    </div>
+                </form>
+                <!-- Form with header -->
+
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-lg-7 ">
+
+                <!--Google map-->
+                <div id="map" class="z-depth-1-half mb-4 " style="height: 400px">
+                    <a class="dg-widget-link"
+                       href="http://2gis.ua/odessa/firm/1970853117961332/center/30.728497,46.529205/zoom/16?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть
+                        на карте Одессы</a>
+                    <div class="dg-widget-link"><a
+                                href="http://2gis.ua/odessa/center/30.728497,46.529205/zoom/16/routeTab/rsType/bus/to/30.728497,46.529205╎ИКБ Гамма, торгово-сервисная компания?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route">Найти
+                            проезд до ИКБ Гамма, торгово-сервисная компания</a></div>
+                    <script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
+                    <script charset="utf-8">new DGWidgetLoader({
+                            "width": "100%",
+                            "height": 400,
+                            "borderColor": "#aaaaa",
+                            "pos": {"lat": 46.529205, "lon": 30.728497, "zoom": 16},
+                            "opt": {"city": "odessa"},
+                            "org": [{"id": "1970853117961332"}]
+                        });</script>
+                    <noscript style="color:#c00;font-size:16px;font-weight:bold;">Виджет карты использует JavaScript.
+                        Включите его в настройках вашего браузера.
+                    </noscript>
+                </div>
+                <!-- Buttons-->
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <a class="">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </a>
+                        <p>Украина, Одесса, 65102</p>
+                        <p class="mb-md-0">ул. Балтская дорога 1</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                        <p>+38 (048) 750-56-56</p>
+                        <p>+38 (048) 750-57-57</p>
+                        <p>+38 (0482) 34-86-08</p>
+                        <p class="mb-md-0">пн - пт, 9:00-17:00</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <p>info@gamma.od.ua</p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </section>
+    <!-- Section: Contact v.1 -->
+</div>
+
+<!-- Footer -->
+<footer class="page-footer font-small  blue pt-4">
+
+    <!-- Footer Links -->
+    <div class="container">
+
+        <!-- Grid row-->
+        <div class="row text-center d-flex justify-content-center pt-5 mb-3">
+
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="/">ГЛАВНАЯ</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="/about">О НАС</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="/news">НОВОСТИ</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="/projects">ПРОЕКТЫ</a>
+                </h6>
+            </div>
+            <!-- Grid column -->
+            <div class="col-md-2 mb-3">
+                <h6 class="text-uppercase font-weight-bold">
+                    <a href="/#contacts">КОНТАКТЫ</a>
+                </h6>
+            </div>
+
+            <!-- Grid column -->
+
+
+        </div>
+        <!-- Grid row-->
+        <hr class="rgba-white-light" style="margin: 0 15%;">
+
+        <!-- Grid row-->
+        <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+            <!-- Grid column -->
+            <div class="col-md-8 col-12 mt-5">
+                <p style="line-height: 1.7rem">Все наши решения основаны на базе средств автоматизации, а также систем
+                    управления и
+                    визуализации компании EATON. <br>
+                    Eaton – многоотраслевая промышленная корпорация, мировой лидер в разработке и производстве
+                    решений для обеспечения качества, распределения и управления электропитанием, оборудования для
+                    промышленного контроля и промышленной автоматики.</p>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+        <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+        <!-- Grid row-->
+        <div class="row pb-3">
+
+            <!-- Grid column -->
+            <div class="col-md-12">
+
+                <div class="mb-5 flex-center">
+
+                    <!-- Facebook -->
+                    <a class="fb-ic" href="{{ .social.Facebook }}">
+                        <i class="fab fa-facebook-f fa-lg white-text mr-4"> </i>
+                    </a>
+                    <!-- Viber -->
+                    <a class="vb-ic" href="{{ .social.Viber }}">
+                        <i class="fab fa-viber fa-lg white-text mr-4"> </i>
+                    </a>
+                    <!--Telegram -->
+                    <a class="tl-ic" href="{{ .social.Telegram }}">
+                        <i class="fab fa-telegram-plane fa-lg white-text mr-4"> </i>
+                    </a>
+                    <!--YouTube-->
+                    <a class="ins-ic" href="{{ .social.Youtube }}">
+                        <i class="fab fa-youtube fa-lg white-text mr-4"> </i>
+                    </a>
+                    <!-- RSS -->
+                    <a class="ins-ic" href="/rss">
+                        <i class="fas fa-rss fa-lg white-text mr-4"></i>
+                    </a>
+
+
+                </div>
+
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row-->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 "> Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/"> © WWW.GAMMA.OD.UA</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+<!-- JQuery -->
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="/static/js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="/static/js/mdb.min.js"></script>
+
+
+<script src="https://www.google.com/recaptcha/api.js?render=6LfZbLEUAAAAAH0MDZxHC0xVf-SxFeHVnzXhv37k"></script>
+<script>
+
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LfZbLEUAAAAAH0MDZxHC0xVf-SxFeHVnzXhv37k', {action: 'homepage'})
+            .then((token)=>{
+                document.getElementById("form_callback_button").disabled =false;
+                let input = document.getElementById("input_token");
+                input.setAttribute('value', token);
+            });
+    });
+
+
+
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+</script>
+</body>
+</html>
