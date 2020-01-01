@@ -66,6 +66,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Printf("%s\n", err)
 			session.AddFlash("Неверный логин или пароль!")
+			session.Options.MaxAge = -1
 			err = session.Save(r, w)
 			if err != nil {
 				http.Redirect(w, r, "/500", 302)
@@ -76,6 +77,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 			return
 		} else {
 			session.Values["admin"] = u.Id
+			session.Options.MaxAge = 60 * 60 * 24 * 30
 			err = session.Save(r, w)
 			if err != nil {
 				http.Redirect(w, r, "/500", 302)
@@ -110,7 +112,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 // News
 func adminNews(w http.ResponseWriter, r *http.Request) {
 	session, err := store.Get(r, "gamma-admin")
-	if err != nil {
+	if err != nil{
 		http.Redirect(w, r, "/500", 302)
 		log.Printf("%s\n", err)
 		return
@@ -921,6 +923,7 @@ func adminSocial(w http.ResponseWriter, r *http.Request) {
 		}
 
 		session.AddFlash("Изминения успешно сохранены!")
+		session.Options.MaxAge = 60 * 60 * 24 * 30
 		err = session.Save(r, w)
 		if err != nil {
 			http.Redirect(w, r, "/500", 302)
@@ -933,6 +936,7 @@ func adminSocial(w http.ResponseWriter, r *http.Request) {
 	}
 
 	flashes := session.Flashes()
+	session.Options.MaxAge = 60 * 60 * 24 * 30
 	err = session.Save(r, w)
 	if err != nil {
 		http.Redirect(w, r, "/500", 302)
@@ -991,6 +995,7 @@ func adminSecure(w http.ResponseWriter, r *http.Request) {
 
 		if !check {
 			session.AddFlash("Неверный пароль!")
+			session.Options.MaxAge = 60 * 60 * 24 * 30
 			err = session.Save(r, w)
 			if err != nil {
 				http.Redirect(w, r, "/500", 302)
@@ -1003,6 +1008,7 @@ func adminSecure(w http.ResponseWriter, r *http.Request) {
 
 		if newPass != newPass2 {
 			session.AddFlash("Пароли не совпадают!")
+			session.Options.MaxAge = 60 * 60 * 24 * 30
 			err = session.Save(r, w)
 			if err != nil {
 				http.Redirect(w, r, "/500", 302)
@@ -1022,6 +1028,7 @@ func adminSecure(w http.ResponseWriter, r *http.Request) {
 		}
 
 		session.AddFlash("Пароль успешно обновлен!")
+		session.Options.MaxAge = 60 * 60 * 24 * 30
 		err = session.Save(r, w)
 		if err != nil {
 			http.Redirect(w, r, "/500", 302)
@@ -1033,6 +1040,7 @@ func adminSecure(w http.ResponseWriter, r *http.Request) {
 	}
 
 	flashes := session.Flashes()
+	session.Options.MaxAge = 60 * 60 * 24 * 30
 	err = session.Save(r, w)
 	if err != nil {
 		http.Redirect(w, r, "/500", 302)

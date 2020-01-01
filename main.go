@@ -22,6 +22,9 @@ var MAX_VALID_SCORE = 0.7
 var location *time.Location
 
 func main() {
+	log.SetFlags(log.Ldate|log.Ltime|log.Lshortfile)
+	store.MaxAge(0)
+
 	var runScripts bool
 	flag.BoolVar(&runScripts, "init-db", false, "Run 'gamma.schema.sql' scripts for database")
 	flag.Parse()

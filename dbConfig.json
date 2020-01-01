@@ -1,5 +1,5 @@
 {
-  "db_name":    "gammaDataBase",
+  "db_name":    "db_name",
   "user":       "root",
   "password":   "root",
   "host":       "127.0.0.1",
