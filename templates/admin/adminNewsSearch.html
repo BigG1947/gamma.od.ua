@@ -84,7 +84,7 @@
 
         <!-- Section heading -->
         <h2 class="h1-responsive font-weight-bold text-center my-5">НОВОСТИ</h2>
-
+        {{ $csrf := .csrfField }}
         <div class="row justify-content-end">
             <form action="/admin/news/search">
                 <div class="form-group form-inline">
@@ -93,10 +93,8 @@
                 </div>
             </form>
         </div>
-        {{ $csrf := .csrfField }}
         {{ range .nl.NewsList }}
             <!-- Grid row -->
-
             <div class="row ">
 
                 <!-- Grid column -->
@@ -148,88 +146,53 @@
         {{ end }}
 
 
-{{/*        <div class="row">*/}}
+        {{/*        <div class="row">*/}}
 
-{{/*            <!-- Grid column -->*/}}
-{{/*            <div class="col-lg-3">*/}}
+        {{/*            <!-- Grid column -->*/}}
+        {{/*            <div class="col-lg-3">*/}}
 
-{{/*                <!-- Featured image -->*/}}
-{{/*                <div class="view overlay rounded z-depth-1 mb-lg-0 mb-4">*/}}
-{{/*                    <img class="img-fluid img-responsive " src="http://gamma.od.ua/Eaton_XN300_gamma.od.ua.jpg"*/}}
-{{/*                         alt="Sample image">*/}}
-{{/*                    <a>*/}}
-{{/*                        <div class="mask rgba-white-slight"></div>*/}}
-{{/*                    </a>*/}}
+        {{/*                <!-- Featured image -->*/}}
+        {{/*                <div class="view overlay rounded z-depth-1 mb-lg-0 mb-4">*/}}
+        {{/*                    <img class="img-fluid img-responsive " src="http://gamma.od.ua/Eaton_XN300_gamma.od.ua.jpg"*/}}
+        {{/*                         alt="Sample image">*/}}
+        {{/*                    <a>*/}}
+        {{/*                        <div class="mask rgba-white-slight"></div>*/}}
+        {{/*                    </a>*/}}
 
-{{/*                </div>*/}}
-{{/*                <p class="dark-grey-text font-italic  mt-2 "> 11/08/2018</p>*/}}
+        {{/*                </div>*/}}
+        {{/*                <p class="dark-grey-text font-italic  mt-2 "> 11/08/2018</p>*/}}
 
-{{/*            </div>*/}}
-{{/*            <!-- Grid column -->*/}}
+        {{/*            </div>*/}}
+        {{/*            <!-- Grid column -->*/}}
 
-{{/*            <!-- Grid column -->*/}}
-{{/*            <div class="col-lg-7">*/}}
+        {{/*            <!-- Grid column -->*/}}
+        {{/*            <div class="col-lg-7">*/}}
 
-{{/*                <!-- Post title -->*/}}
-{{/*                <h3 class="font-weight-bold mb-3"><strong>Компания "Eaton" выпустила ультра-компактную секционированную*/}}
-{{/*                        систему ввода/вывода для АСУ ТП</strong></h3>*/}}
-{{/*                <!-- Post data -->*/}}
+        {{/*                <!-- Post title -->*/}}
+        {{/*                <h3 class="font-weight-bold mb-3"><strong>Компания "Eaton" выпустила ультра-компактную секционированную*/}}
+        {{/*                        систему ввода/вывода для АСУ ТП</strong></h3>*/}}
+        {{/*                <!-- Post data -->*/}}
 
-{{/*                <!-- Excerpt -->*/}}
-{{/*                <p>Компания «Eaton», специализирующаяся в области управления электроэнергией, разработала новую*/}}
-{{/*                    ультра-компактную модульную систему ввода/вывода с широким спектром преимуществ для*/}}
-{{/*                    машиностроителей...</p>*/}}
-
-
-{{/*            </div>*/}}
-
-{{/*            <div class="col-lg-2  my-auto py-1">*/}}
-{{/*                <a class="btn btn-info btn-md w-100 m-0 mt-2" href="./fullnews.html">Просмотреть</a>*/}}
-{{/*                <a class="btn btn-primary btn-md w-100 m-0 mt-2" href="./fullnews.html">Редактировать</a>*/}}
-{{/*                <a class="btn btn-danger-dark btn-md w-100 m-0 mt-2" href="#"*/}}
-{{/*                   onclick="return confirm('Вы подтверждаете удаление?');">Удалить</a>*/}}
-{{/*            </div>*/}}
-{{/*            <!-- Grid column -->*/}}
-
-{{/*        </div>*/}}
-{{/*        <!-- Grid row -->*/}}
-{{/*        <hr class="w-100">*/}}
+        {{/*                <!-- Excerpt -->*/}}
+        {{/*                <p>Компания «Eaton», специализирующаяся в области управления электроэнергией, разработала новую*/}}
+        {{/*                    ультра-компактную модульную систему ввода/вывода с широким спектром преимуществ для*/}}
+        {{/*                    машиностроителей...</p>*/}}
 
 
-        <nav aria-label="Page navigation example" class="mt-5">
-            <ul class="pagination pg-info justify-content-center pagination-circle">
-                <li class="page-item "><a {{ if ne .pagination.CurrentPage 1}}href="/admin/news/page=1"{{end}}
-                                          class="page-link">Первая</a></li>
-                <li class="page-item ">
-                    <a class="page-link" {{if .pagination.HasPrev }}href="/admin/news/page={{.pagination.PrevPage}}"{{ end }}
-                       aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Предыдущая</span>
-                    </a>
-                </li>
-                {{ $current := .pagination.CurrentPage}}
-                {{ range .pagination.PageList }}
-                    {{ if eq $current . }}
-                        <li class="page-item active">
-                            <a class="page-link" href="/admin/news/page={{.}}">{{.}} <span
-                                        class="sr-only">(current)</span></a>
-                        </li>
-                    {{else}}
-                        <li class="page-item"><a class="page-link" href="/admin/news/page={{.}}">{{ . }}</a></li>
-                    {{end}}
-                {{ end }}
-                <li class="page-item">
-                    <a {{ if .pagination.HasNext }}href="/admin/news/page={{ .pagination.NextPage}}"{{end}} class=" page-link"
-                       aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Следующая</span>
-                    </a>
-                </li>
-                <li class="page-item"><a
-                            {{ if and (ne .pagination.TotalPage 0) (ne .pagination.CurrentPage .pagination.TotalPage) }}href="/admin/news/page={{ .pagination.TotalPage }}"{{end}}
-                            class="page-link">Последняя</a></li>
-            </ul>
-        </nav>
+        {{/*            </div>*/}}
+
+        {{/*            <div class="col-lg-2  my-auto py-1">*/}}
+        {{/*                <a class="btn btn-info btn-md w-100 m-0 mt-2" href="./fullnews.html">Просмотреть</a>*/}}
+        {{/*                <a class="btn btn-primary btn-md w-100 m-0 mt-2" href="./fullnews.html">Редактировать</a>*/}}
+        {{/*                <a class="btn btn-danger-dark btn-md w-100 m-0 mt-2" href="#"*/}}
+        {{/*                   onclick="return confirm('Вы подтверждаете удаление?');">Удалить</a>*/}}
+        {{/*            </div>*/}}
+        {{/*            <!-- Grid column -->*/}}
+
+        {{/*        </div>*/}}
+        {{/*        <!-- Grid row -->*/}}
+        {{/*        <hr class="w-100">*/}}
+
 
 
     </section>

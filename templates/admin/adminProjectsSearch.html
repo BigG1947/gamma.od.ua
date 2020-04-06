@@ -133,45 +133,6 @@
 
 
         <!-- Grid column -->
-
-        <nav aria-label="Page navigation example" class="mt-5">
-            <ul class="pagination pg-info justify-content-center pagination-circle">
-                <li class="page-item "><a {{ if ne .pagination.CurrentPage 1}}href="/admin/projects/page=1"{{end}}
-                                          class="page-link">Первая</a></li>
-                <li class="page-item ">
-                    <a class="page-link"
-                       {{if .pagination.HasPrev }}href="/admin/projects/page={{.pagination.PrevPage}}"{{ end }}
-                       aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Предыдущая</span>
-                    </a>
-                </li>
-                {{ $current := .pagination.CurrentPage}}
-                {{ range .pagination.PageList }}
-                    {{ if eq $current . }}
-                        <li class="page-item active">
-                            <a class="page-link" href="/admin/projects/page={{.}}">{{.}} <span
-                                        class="sr-only">(current)</span></a>
-                        </li>
-                    {{else}}
-                        <li class="page-item"><a class="page-link" href="/admin/projects/page={{.}}">{{ . }}</a></li>
-                    {{end}}
-                {{ end }}
-                <li class="page-item">
-                    <a {{ if .pagination.HasNext }}href="/admin/projects/page={{ .pagination.NextPage}}"{{end}}
-                       class=" page-link"
-                       aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Следующая</span>
-                    </a>
-                </li>
-                <li class="page-item"><a
-                            {{ if and (ne .pagination.TotalPage 0) (ne .pagination.CurrentPage .pagination.TotalPage) }}href="/admin/projects/page={{ .pagination.TotalPage }}"{{end}}
-                            class="page-link">Последняя</a></li>
-            </ul>
-        </nav>
-
-
     </section>
     <!-- Projects section v.4 -->
 </div>

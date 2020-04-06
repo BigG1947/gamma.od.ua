@@ -9,6 +9,7 @@ type Project struct {
 	Name        string         `json:"name"`
 	Description string         `json:"description"`
 	Images      string         `json:"images"`
+	Smeta       string         `json:"smeta"`
 	Photos      []Photo        `json:"photos"`
 	Video1      sql.NullString `json:"video_1"`
 	Video2      sql.NullString `json:"video_1"`
@@ -67,8 +68,27 @@ func (pl *ProjectList) GetFavoriteProjectList(db *sql.DB) error {
 	return nil
 }
 
+func (pl *ProjectList) GetSearch(db *sql.DB, value string) error {
+	value = "%" + value + "%"
+	rows, err := db.Query("SELECT id, name, description, images, is_favorite, date FROM project WHERE name LIKE ? ORDER BY date DESC, id DESC", value)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var p Project
+		err = rows.Scan(&p.Id, &p.Name, &p.Description, &p.Images, &p.IsFavorite, &p.Date)
+		if err != nil {
+			return err
+		}
+		pl.ProjectList = append(pl.ProjectList, p)
+	}
+
+	return nil
+}
+
 func (p *Project) Get(db *sql.DB, id int64) error {
-	err := db.QueryRow("SELECT id, name, description, images, is_favorite, video1, video2, video3, date FROM project WHERE id = ?", id).Scan(&p.Id, &p.Name, &p.Description, &p.Images, &p.IsFavorite, &p.Video1, &p.Video2, &p.Video3, &p.Date)
+	err := db.QueryRow("SELECT id, name, description, images, smeta, is_favorite, video1, video2, video3, date FROM project WHERE id = ?", id).Scan(&p.Id, &p.Name, &p.Description, &p.Images, &p.Smeta, &p.IsFavorite, &p.Video1, &p.Video2, &p.Video3, &p.Date)
 	if err != nil {
 		return err
 	}
@@ -94,7 +114,7 @@ func (p *Project) Get(db *sql.DB, id int64) error {
 }
 
 func (p *Project) Add(db *sql.DB) error {
-	res, err := db.Exec("INSERT INTO project (name, description, images, is_favorite, video1, video2, video3, date) VALUES (?,?,?,?,?,?,?,?)", p.Name, p.Description, p.Images, p.IsFavorite, p.Video1.String, p.Video2.String, p.Video3.String, p.Date)
+	res, err := db.Exec("INSERT INTO project (name, description, images, smeta, is_favorite, video1, video2, video3, date) VALUES (?,?,?,?,?,?,?,?,?)", p.Name, p.Description, p.Images, p.Smeta, p.IsFavorite, p.Video1.String, p.Video2.String, p.Video3.String, p.Date)
 	if err != nil {
 		return err
 	}
@@ -134,7 +154,7 @@ func (p *Project) Add(db *sql.DB) error {
 }
 
 func (p *Project) Update(db *sql.DB) error {
-	_, err := db.Exec("UPDATE project SET name = ?, description = ?, images = ?, is_favorite = ?, video1 = ?, video2 = ?, video3 = ? WHERE id = ?", p.Name, p.Description, p.Images, p.IsFavorite, p.Video1.String, p.Video2.String, p.Video3.String, p.Id)
+	_, err := db.Exec("UPDATE project SET name = ?, description = ?, images = ?, smeta = ?, is_favorite = ?, video1 = ?, video2 = ?, video3 = ? WHERE id = ?", p.Name, p.Description, p.Images, p.Smeta, p.IsFavorite, p.Video1.String, p.Video2.String, p.Video3.String, p.Id)
 	if err != nil {
 		return err
 	}

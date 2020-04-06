@@ -21,6 +21,7 @@ func routerInit() *mux.Router {
 	// Dir serve
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	router.PathPrefix("/upload-images/").Handler(http.StripPrefix("/upload-images/", http.FileServer(http.Dir("upload-images"))))
+	router.PathPrefix("/upload-pdf/").Handler(http.StripPrefix("/upload-pdf/", http.FileServer(http.Dir("upload-pdf"))))
 
 	// Main Routes
 	router.HandleFunc("/", index)
@@ -49,6 +50,7 @@ func routerInit() *mux.Router {
 	router.HandleFunc("/admin/news/add", newsAdd).Methods("GET", "POST")
 	router.HandleFunc("/admin/news/{id:[0-9]+}/edit", newsEdit).Methods("GET", "POST")
 	router.HandleFunc("/admin/news/delete", newsDelete).Methods("POST")
+	router.HandleFunc("/admin/news/search", adminNewsSearch).Methods("GET", "POST")
 
 	// Admin Projects
 	router.HandleFunc("/admin/projects", adminProjects)
@@ -58,6 +60,7 @@ func routerInit() *mux.Router {
 	router.HandleFunc("/admin/projects/delete", projectsDelete).Methods("POST")
 	router.HandleFunc("/admin/projects/{idProject:[0-9]+}/photo/{idPhoto:[0-9]+}/delete", projectPhotoDelete)
 	router.HandleFunc("/admin/project/photo/add", projectPhotoAdd).Methods("POST")
+	router.HandleFunc("/admin/projects/search", adminProjectsSearch).Methods("GET", "POST")
 
 	// AdminSocial
 	router.HandleFunc("/admin/social", adminSocial).Methods("GET", "POST")

@@ -103,6 +103,25 @@ func (nl *NewsList) GetLatestNews(db *sql.DB) error {
 	return nil
 }
 
+func (nl *NewsList) GetSearch(db *sql.DB, value string) error {
+	value = "%" + value + "%"
+	rows, err := db.Query("SELECT id, title, description, text, images, date, count_see FROM news WHERE title LIKE ? ORDER BY date DESC, id DESC", value)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var n News
+		err = rows.Scan(&n.Id, &n.Title, &n.Description, &n.Text, &n.Images, &n.Date, &n.CountSee)
+		if err != nil {
+			return err
+		}
+		nl.NewsList = append(nl.NewsList, n)
+	}
+
+	return nil
+}
+
 func GetCountNews(db *sql.DB) int64 {
 	var count int64
 	err := db.QueryRow("SELECT COUNT(id) FROM news").Scan(&count)

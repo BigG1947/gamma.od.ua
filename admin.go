@@ -112,7 +112,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 // News
 func adminNews(w http.ResponseWriter, r *http.Request) {
 	session, err := store.Get(r, "gamma-admin")
-	if err != nil{
+	if err != nil {
 		http.Redirect(w, r, "/500", 302)
 		log.Printf("%s\n", err)
 		return
@@ -149,6 +149,46 @@ func adminNews(w http.ResponseWriter, r *http.Request) {
 		"nl":         nl,
 		"pagination": pagination,
 		"csrfField":  csrf.TemplateField(r),
+	})
+
+	if err != nil {
+		http.Redirect(w, r, "/500", 302)
+		log.Printf("%s\n", err)
+		return
+	}
+	return
+}
+func adminNewsSearch(w http.ResponseWriter, r *http.Request) {
+	session, err := store.Get(r, "gamma-admin")
+	if err != nil {
+		http.Redirect(w, r, "/500", 302)
+		log.Printf("%s\n", err)
+		return
+	}
+
+	if !isAuth(session) {
+		http.Redirect(w, r, "/admin/login", 302)
+		return
+	}
+
+	var value string
+
+	if _, ok := r.URL.Query()["search"]; ok {
+		value = r.URL.Query()["search"][0]
+	}
+
+	var nl models.NewsList
+	err = nl.GetSearch(db, value)
+	if err != nil {
+		http.Redirect(w, r, "/500", 302)
+		log.Printf("%s\n", err)
+		return
+	}
+
+	tmpl := template.Must(template.ParseFiles("templates/admin/adminNewsSearch.html"))
+	err = tmpl.Execute(w, map[string]interface{}{
+		"nl":        nl,
+		"csrfField": csrf.TemplateField(r),
 	})
 
 	if err != nil {
@@ -464,7 +504,27 @@ func projectsAdd(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		file, header, err := r.FormFile("images")
+		file, header, err := r.FormFile("smeta")
+		if err != nil {
+			http.Redirect(w, r, "/500", 302)
+			log.Printf("%s\n", err)
+			return
+		}
+		defer file.Close()
+		if header.Header.Get("Content-Type") != "application/pdf" {
+			log.Printf("AddProject: Неверный тип формата файла: %s\n", header.Header.Get("Content-Type"))
+			http.Redirect(w, r, "/413", 302)
+			return
+		}
+
+		smeta, err := UploadPDF(file)
+		if err != nil {
+			http.Redirect(w, r, "/500", 302)
+			log.Printf("%s\n", err)
+			return
+		}
+
+		file, header, err = r.FormFile("images")
 		if err != nil {
 			http.Redirect(w, r, "/500", 302)
 			log.Printf("%s\n", err)
@@ -487,6 +547,7 @@ func projectsAdd(w http.ResponseWriter, r *http.Request) {
 		var project models.Project
 		project.Name = name
 		project.Description = description
+		project.Smeta = smeta
 		project.Images = images
 		project.IsFavorite = favorite
 		project.Date = time.Now().In(location).Format("2006-01-02 15:04:05")
@@ -611,6 +672,7 @@ func projectsEdit(w http.ResponseWriter, r *http.Request) {
 		name := r.FormValue("name")
 		description := r.FormValue("description")
 		images := project.Images
+		smeta := project.Smeta
 		favoriteParam := r.FormValue("favorite")
 		favorite, err := strconv.ParseInt(favoriteParam, 10, 64)
 		if err != nil {
@@ -626,7 +688,34 @@ func projectsEdit(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		file, header, err := r.FormFile("images")
+		file, header, err := r.FormFile("smeta")
+		if err == nil {
+			defer file.Close()
+			if header.Header.Get("Content-Type") != "application/pdf" {
+				log.Printf("EditProject: Неверный тип формата файла: %s\n", header.Header.Get("Content-Type"))
+				http.Redirect(w, r, "/413", 302)
+				return
+			}
+			smeta, err = UploadPDF(file)
+			if err != nil {
+				http.Redirect(w, r, "/500", 302)
+				log.Printf("%s\n", err)
+				return
+			}
+
+			err = DeletePDF(project.Smeta)
+			if err != nil {
+				http.Redirect(w, r, "/500", 302)
+				log.Printf("%s\n", err)
+				return
+			}
+		} else if err != http.ErrMissingFile {
+			http.Redirect(w, r, "/500", 302)
+			log.Printf("%s\n", err)
+			return
+		}
+
+		file, header, err = r.FormFile("images")
 		if err == nil {
 			defer file.Close()
 			if (header.Header.Get("Content-Type") != "image/jpeg" && header.Header.Get("Content-Type") != "image/png") || header.Size > 2<<20 {
@@ -656,6 +745,7 @@ func projectsEdit(w http.ResponseWriter, r *http.Request) {
 		project.Name = name
 		project.Description = description
 		project.Images = images
+		project.Smeta = smeta
 		project.IsFavorite = favorite
 
 		video1Param := r.FormValue("video1")
@@ -751,7 +841,13 @@ func projectsDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	err = DeleteImages(project.Images)
+	if err != nil {
+		http.Redirect(w, r, "/500", 302)
+		log.Printf("%s\n", err)
+		return
+	}
 
+	err = DeletePDF(project.Smeta)
 	if err != nil {
 		http.Redirect(w, r, "/500", 302)
 		log.Printf("%s\n", err)
@@ -884,6 +980,44 @@ func projectPhotoDelete(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	http.Redirect(w, r, "/admin/projects/"+idProjectParam+"/edit", 302)
+	return
+}
+func adminProjectsSearch(w http.ResponseWriter, r *http.Request) {
+	session, err := store.Get(r, "gamma-admin")
+	if err != nil {
+		http.Redirect(w, r, "/500", 302)
+		log.Printf("%s\n", err)
+		return
+	}
+
+	if !isAuth(session) {
+		http.Redirect(w, r, "/admin/login", 302)
+		return
+	}
+
+	var value string
+	if _, ok := r.URL.Query()["search"]; ok {
+		value = r.URL.Query()["search"][0]
+	}
+
+	var pl models.ProjectList
+	err = pl.GetSearch(db, value)
+	if err != nil {
+		http.Redirect(w, r, "/500", 302)
+		log.Printf("%s\n", err)
+		return
+	}
+
+	tmpl := template.Must(template.ParseFiles("templates/admin/adminProjectsSearch.html"))
+	err = tmpl.Execute(w, map[string]interface{}{
+		"csrfField": csrf.TemplateField(r),
+		"pl":        pl,
+	})
+	if err != nil {
+		http.Redirect(w, r, "/500", 302)
+		log.Printf("%s\n", err)
+		return
+	}
 	return
 }
 

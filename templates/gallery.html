@@ -95,7 +95,11 @@
         <!-- Section heading -->
         <h2 class="h1-responsive font-weight-bold text-center my-5">{{ .project.Name }}</h2>
         <!-- Section description -->
-        <p class="dark-grey-text text-center w-responsive mx-auto mb-5">{{ .project.Description }}</p>
+        <p class="dark-grey-text text-center w-responsive mx-auto">{{ .project.Description }}</p>
+        <div class="text-center mb-5">
+            <a target="_blank" href="/{{.project.Smeta}}"><i class="fas fa-file-pdf text-ing" style="font-size: 3rem"></i>
+            <p class="text-center text-info">загрузить смету</p></a>
+        </div>
 
         <!-- Grid row -->
         <div class="gallery" id="gallery">

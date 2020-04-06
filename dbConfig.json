@@ -1,7 +1,7 @@
 {
-  "db_name":    "db_name",
-  "user":       "root",
-  "password":   "root",
+  "db_name":    "gamma_od_ua",
+  "user":       "gamma",
+  "password":   "1947bigg",
   "host":       "127.0.0.1",
   "port":       3306,
   "protocol":   "tcp"

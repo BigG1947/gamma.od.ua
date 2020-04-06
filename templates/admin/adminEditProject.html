@@ -109,6 +109,17 @@
                         </div>
                     </div>
 
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="smeta">Смета (pdf)</span>
+                        </div>
+                        <div class="custom-file">
+                            <input name="smeta" type="file" class="custom-file-input" id="smeta"
+                                   aria-describedby="inputGroupFileAddon01" accept="application/pdf" required>
+                            <label class="custom-file-label" for="inputGroupFile01">Загрузите файл сметы по проекту</label>
+                        </div>
+                    </div>
+
 
                     <div class="md-form">
                         <input {{ if .project.Video1.String }}value="https://www.youtube.com/watch?v={{ .project.Video1.String }}"{{ end }} type="text" name="video1" id="video1"

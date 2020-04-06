@@ -22,7 +22,7 @@ var MAX_VALID_SCORE = 0.7
 var location *time.Location
 
 func main() {
-	log.SetFlags(log.Ldate|log.Ltime|log.Lshortfile)
+	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
 	store.MaxAge(0)
 
 	var runScripts bool
@@ -37,11 +37,11 @@ func main() {
 	}
 
 	db, err = connectionToMysqlServer()
-	defer db.Close()
 	if err != nil {
 		log.Printf("ConnectionToMusqlServer: %s\n", err)
 		return
 	}
+	defer db.Close()
 
 	if runScripts {
 		err = createDbSchema()
